@@ -9,6 +9,7 @@ addons:
 cache:
   directories:
     - $HOME/.composer/cache/files
+
 php: # symfony/skeleton requires ^7.0.8
 - 7.0 # SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
 - 7.1
@@ -52,7 +53,7 @@ install:
 # - composer require orm
 # - composer require form
 # - composer require form validator
-- composer require --dev maker-bundle
+# - composer require --dev maker-bundle
 
 before_script:
 - composer show
@@ -75,13 +76,8 @@ before_script:
 script:
 - bin/console server:start
 # - make serve # would need a Makefile !
-- w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 - elinks http://localhost:8000/ -dump-color-mode 4 -dump
-
-- empty -f bin/console make:controller Pizza
-- empty -w "composer require annotations" ; if [ $? -eq 1 ]; then composer require annotations; bin/console make:controller Pizza; fi
-- w3m http://localhost:8000/pizza | cat
-- elinks http://localhost:8000/pizza -dump-color-mode 4 -dump
+- w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 
 - php ../.travis/bin/security-checker --version
 - php ../.travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock
