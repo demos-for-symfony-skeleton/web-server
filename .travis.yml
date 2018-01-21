@@ -58,7 +58,6 @@ install:
 before_script:
 - composer show
 - bin/console
-- bin/console help make:controller
 - ls --color
 - ls -R --color bin config public src
 # - ls -R --color var
