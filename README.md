@@ -1,7 +1,7 @@
 # skeleton-only
-Symfony Flex and Skeleton Demo
+Symfony Flex and Skeleton Demo with Web Server
 
-[![Build Status](https://travis-ci.org/symfony-skeleton-demo/skeleton-only.svg?branch=master)](https://travis-ci.org/symfony-skeleton-demo/skeleton-only)
+[![Build Status](https://travis-ci.org/symfony-skeleton-demo/web-server.svg?branch=master)](https://travis-ci.org/symfony-skeleton-demo/web-server)
 
 * Script building a website.
 
