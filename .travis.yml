@@ -5,17 +5,16 @@ addons:
   apt:
     packages:
     - elinks # For dysplaying php files on console.
-    # - empty-expect
 
 cache:
   directories:
     - $HOME/.composer/cache/files
 
-php: # symfony/skeleton requires ^7.0.8
+php:
 - nightly
 - 7.2
 - 7.1
-- 7.0 # SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
+- 7.0 # SKELETON_VERSION="^3.4" only one version of skeleton working with php 7.0
 
 matrix:
   fast_finish: true
@@ -25,29 +24,20 @@ matrix:
   - php: 7.2
     env: SKELETON_VERSION="dev-master@dev"
   allow_failures:
-  # - php: 7.0 # sensiolabs/security-checker 4.1.7
-  - php: 7.3
   - php: nightly
-  # - env: SKELETON_VERSION="4.1.x-dev@dev"
+  # - env: SKELETON_VERSION="4.2.x-dev@dev"
   - env: SKELETON_VERSION="dev-master@dev"
 
 before_install:
-- install --directory .travis/bin
-# - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
-- wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker
-
 # - pip install pygments # but now pygmentize is no more used right here.
 - go get -u github.com/jingweno/ccat
 
 install:
-# - composer create-project symfony/skeleton my-project $SYMFONY_VERSION
-#^ Does not work yet for Symfony dev versions!
-#^ in Symfony 4 there is a symfony command instead! (is it an urban legend?)
-- composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
-- cd my-project
+- composer create-project --no-install symfony/skeleton skeleton $SKELETON_VERSION
+- cd skeleton
 # - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
-- composer install # --with-all-dependencies
-#^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
+#^ No more needed!
+- composer install
 
 - composer require --dev symfony/web-server-bundle
 
@@ -83,10 +73,7 @@ script:
 - elinks http://localhost:8000/ -dump-color-mode 4 -dump
 - w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 
-- 'curl -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F lock=@composer.lock'
+- curl -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F 'lock=@composer.lock'
   #^ This checks that the application doesn't use dependencies with known security vulnerabilities
 
 after_script:
-- php ../.travis/bin/security-checker --version
-- php ../.travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock
-#^ bug with PHP 7.0 and security-checker phar
