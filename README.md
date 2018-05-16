@@ -8,4 +8,4 @@ Symfony Flex and Skeleton Demo with Web Server
 # Relation to other projects
 ## Similar projects
 * [symfony-flex-demo/script-skeleton](https://github.com/symfony-flex-demo/script-skeleton) (Doble)
-* [symfony-flex-demo/skeleton](https://github.com/symfony-flex-demo/skeleton)
+* [symfony-skeleton-demo/skeleton](https://github.com/symfony-skeleton-demo/skeleton)
