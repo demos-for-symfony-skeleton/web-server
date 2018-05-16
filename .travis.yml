@@ -21,13 +21,14 @@ matrix:
   fast_finish: true
   include:
   - php: 7.2
-    env: SKELETON_VERSION="4.1.x-dev@dev"
+    env: SKELETON_VERSION="4.1.x-dev@alpha"
   - php: 7.2
     env: SKELETON_VERSION="dev-master@dev"
   allow_failures:
   # - php: 7.0 # sensiolabs/security-checker 4.1.7
   - php: 7.3
   - php: nightly
+  - env: SKELETON_VERSION="4.1.x-dev@alpha"
   - env: SKELETON_VERSION="dev-master@dev"
 
 before_install:
