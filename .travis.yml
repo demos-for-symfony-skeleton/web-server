@@ -21,6 +21,8 @@ matrix:
   fast_finish: true
   include:
   - php: 7.2
+    env: SKELETON_VERSION="4.1.x-dev@dev"
+  - php: 7.2
     env: SKELETON_VERSION="dev-master@dev"
   allow_failures:
   # - php: 7.0 # sensiolabs/security-checker 4.1.7
@@ -42,8 +44,8 @@ install:
 #^ in Symfony 4 there is a symfony command instead! (is it an urban legend?)
 - composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
 - cd my-project
-- if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
-# - composer install # --with-all-dependencies
+# - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
+- composer install # --with-all-dependencies
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 
 - composer require --dev symfony/web-server-bundle
