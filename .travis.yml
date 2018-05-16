@@ -73,7 +73,7 @@ script:
 - elinks http://localhost:8000/ -dump-color-mode 4 -dump
 - w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 
-- curl -H 'Accept: text/plain' https://security.sensiolabs.org/check_lock -F 'lock=@composer.lock'
+- curl -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F 'lock=@composer.lock'
   #^ This checks that the application doesn't use dependencies with known security vulnerabilities
 
 after_script:
