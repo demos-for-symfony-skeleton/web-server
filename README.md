@@ -1,4 +1,4 @@
-# skeleton-only
+# [symfony-skeleton-demo](https://symfony-skeleton-demo.github.io)/skeleton-only
 Symfony Flex and Skeleton Demo with Web Server
 
 [![Build Status](https://travis-ci.org/symfony-skeleton-demo/web-server.svg?branch=master)](https://travis-ci.org/symfony-skeleton-demo/web-server)
