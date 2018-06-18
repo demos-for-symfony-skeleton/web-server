@@ -77,4 +77,9 @@ script:
   curl -H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F lock=@composer.lock
   #^ This checks that the application doesn't use dependencies with known security vulnerabilities
 
+- |
+  w3m -post - -header "Accept: text/plain" https://security.sensiolabs.org/check_lock <<<"lock=$(cat composer.lock)"
+  # Does not work: "No lock!"
+  #^ This checks that the application doesn't use dependencies with known security vulnerabilities
+
 after_script:
